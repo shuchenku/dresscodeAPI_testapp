@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="dressCode">
+<head>
+  <title>DressCode API demo</title>
+  <link href="css/bootstrap.css" rel="stylesheet"/>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="angular-route.min.js"></script>
+  <script src="/bower_components/angular-cookie/angular-cookie.js"></script>
+  <script src="/bower_components/ng-token-auth/dist/ng-token-auth.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="navbar-header">
+     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+     </button>
+     <a class="navbar-brand" href="#/">DressCode Demo with API service and authentication</a>
+   </div>
+   <div class="navbar-collapse collapse">
+     <ul class="nav navbar-nav navbar-right">
+       <li data-ng-show="user.id"><a href="#/posts">Posts view</a></li>
+       <li data-ng-show="user.id"><a href="#/profile">Profile</a></li>
+       <li data-ng-hide="user.id"><a href="#/signin">Sign in</a></li>
+       <li data-ng-hide="user.id"><a href="#/signup">Sign up</a></li>
+       <li data-ng-show="user.id"><a ng-click="signOut()">Sign out</a></li>
+     </ul>
+   </div>
+ </div>
+ <div class="row" style="padding-left:20px">
+  <div ng-view></div>
+</div>
+</div>
+</body>
+</html>

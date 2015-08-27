@@ -24,7 +24,9 @@ angular.module('dressCode', ['ngRoute','ng-token-auth'])
   $authProvider.configure({
     apiUrl:    'http://localhost:3000',
     authProviderPaths: {
-        facebook: '/auth/facebook'
+        facebook: '/auth/facebook',
+        google: '/auth/google_oauth2',
+        twitter: '/auth/twitter'
       }
   });
 })
@@ -80,9 +82,11 @@ function AuthCtrl($scope, $auth, $location) {
       $auth.authenticate(provider)
         .then(function(resp) {
           // handle success
+          $location.path('/posts')
         })
         .catch(function(resp) {
           // handle errors
+          $location.path('/register')
         });
     };
 
@@ -149,7 +153,7 @@ function DressCodeCtrl($scope, $http, dressCodeApi) {
       'photo_count': 1
     },
     'other': {
-      'images' : [],
+      'images' : '',
       'post_tags': $scope.tags,
     }
   };
